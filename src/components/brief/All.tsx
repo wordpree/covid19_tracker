@@ -6,10 +6,12 @@ interface IBProps {
   deaths: number;
   recovered: number;
 }
+
 const All = ({ cases, deaths, recovered }: IBProps) => {
   const options = {
     animationEnabled: true,
-    theme: "dark1",
+    theme: "light1",
+    backgroundColor: "#F5DEB3",
     title: {
       text: "Novel Coronavirus cases globally",
     },
@@ -17,7 +19,7 @@ const All = ({ cases, deaths, recovered }: IBProps) => {
       title: "Cases numbers",
       reversed: true,
     },
-    dataPointMaxWidth: 70,
+    dataPointMaxWidth: 40,
     data: [
       {
         type: "bar",

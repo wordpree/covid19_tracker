@@ -17,3 +17,12 @@ export interface IBrief {
     }
   ];
 }
+
+export interface IDaily {
+  totalConfirmed: number;
+  deltaConfirmed: number;
+  deaths: {
+    total: number;
+  };
+  reportDate: string;
+}

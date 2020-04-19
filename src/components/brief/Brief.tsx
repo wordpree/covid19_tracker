@@ -1,16 +1,18 @@
 import React from "react";
-import { Active, Close, All } from "./index";
-import { IBrief } from "../../util/type";
+import { Active, Close, All, Daily } from "./index";
 import { Card, Container, Grid } from "@material-ui/core";
 import Loading from "../Loading";
+import { BriefCasesContext } from "../context";
 
-const Brief = ({
-  cases,
-  deaths,
-  recovered,
-  active_cases,
-  closed_cases,
-}: IBrief) => {
+const Brief = () => {
+  const {
+    cases,
+    deaths,
+    recovered,
+    active_cases,
+    closed_cases,
+  } = BriefCasesContext();
+
   return cases ? (
     <Container style={{ marginTop: "3rem" }}>
       <Grid container spacing={4}>
@@ -27,6 +29,9 @@ const Brief = ({
       </Grid>
       <Card style={{ marginTop: "3rem" }}>
         <All cases={cases} deaths={deaths} recovered={recovered} />
+      </Card>
+      <Card style={{ marginTop: "3rem" }}>
+        <Daily />
       </Card>
     </Container>
   ) : (

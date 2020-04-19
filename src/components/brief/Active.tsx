@@ -11,11 +11,12 @@ interface IBProps {
 const Brief = ({ active }: IBProps) => {
   const options = {
     animationEnabled: true,
-    theme: "dark1",
+    backgroundColor: "#F5DEB3",
+    theme: "light1",
     title: {
       text: "Currently Active Cases",
     },
-    dataPointMaxWidth: 70,
+    dataPointMaxWidth: 40,
     data: [
       {
         type: "column",
