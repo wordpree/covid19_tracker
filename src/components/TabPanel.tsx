@@ -1,4 +1,5 @@
 import React from "react";
+import { makeStyles } from "@material-ui/core";
 
 interface ITPProps {
   index: number;
@@ -6,8 +7,16 @@ interface ITPProps {
   children?: React.ReactNode;
 }
 
+const useStyles = makeStyles((theme) => ({
+  div: {
+    [theme.breakpoints.up(768)]: {
+      marginLeft: 120,
+    },
+  },
+}));
 const TabPanel = ({ index, value, children }: ITPProps) => {
-  return value === index ? <div>{children}</div> : null;
+  const classes = useStyles();
+  return value === index ? <div className={classes.div}>{children}</div> : null;
 };
 
 export default TabPanel;

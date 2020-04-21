@@ -2,19 +2,27 @@ import React, { useState, ChangeEvent } from "react";
 import { Tabs, Tab, makeStyles, Paper, Typography } from "@material-ui/core";
 import { ViewGrid, MapMarker, Map } from "mdi-material-ui";
 import TabPanel from "./TabPanel";
+import MobileNav from "./MobileNav";
 import { BriefCasesProvider, DailyCasesProvider } from "./context";
 import { Brief } from "./brief";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    position: "fixed",
-    height: "100%",
-    marginRight: 180,
+  wrapper: {
+    clear: "both",
+    maxHeight: 0,
+    transition: "max-height .2s ease-out",
+    overflow: "hidden",
+  },
+  paper: {
     background: "rgb(58, 171, 166)",
     color: "#eee",
-    maxWidth: 120,
-    top: 0,
-    zIndex: 999,
+    [theme.breakpoints.up(768)]: {
+      position: "fixed",
+      height: "100%",
+      maxWidth: 120,
+      top: 0,
+      zIndex: 999,
+    },
   },
   title: {
     fontWeight: "bold",
@@ -25,13 +33,22 @@ const useStyles = makeStyles((theme) => ({
   },
   center: {
     alignItems: "center",
-    paddingTop: "1rem",
     "&>button": {
       padding: "1rem 0",
     },
   },
   indicator: {
     background: "#F7B03B",
+  },
+  tabRoot: {
+    [theme.breakpoints.down(768)]: {
+      minWidth: "100%",
+    },
+  },
+  selected: {
+    transition: "all 0.3s",
+    borderTop: "1px inset #fff",
+    background: "#3EB5AF",
   },
 }));
 
@@ -44,25 +61,49 @@ const TabNav = () => {
   return (
     <BriefCasesProvider>
       <DailyCasesProvider>
-        <Paper className={classes.root}>
-          <Typography variant="h6" className={classes.title}>
-            Covid-19
-          </Typography>
-          <Tabs
-            classes={{
-              flexContainer: classes.center,
-              indicator: classes.indicator,
-            }}
-            orientation="vertical"
-            value={value}
-            onChange={handleChange}
-            aria-label="tabs navigation"
-          >
-            <Tab label="Global" icon={<ViewGrid />} />
-            <Tab label="Country" icon={<MapMarker />} />
-            <Tab label="Map" icon={<Map />} />
-          </Tabs>
-        </Paper>
+        <MobileNav />
+        <div className={`${classes.wrapper} wrapper`}>
+          <Paper className={classes.paper}>
+            <Typography variant="h6" className={classes.title}>
+              Covid-19
+            </Typography>
+            <Tabs
+              classes={{
+                flexContainer: classes.center,
+                indicator: classes.indicator,
+              }}
+              orientation="vertical"
+              value={value}
+              onChange={handleChange}
+              aria-label="tabs navigation"
+            >
+              <Tab
+                label="Global"
+                icon={<ViewGrid />}
+                classes={{
+                  selected: classes.selected,
+                  root: classes.tabRoot,
+                }}
+              />
+              <Tab
+                label="Country"
+                icon={<MapMarker />}
+                classes={{
+                  root: classes.tabRoot,
+                  selected: classes.selected,
+                }}
+              />
+              <Tab
+                label="Map"
+                icon={<Map />}
+                classes={{
+                  root: classes.tabRoot,
+                  selected: classes.selected,
+                }}
+              />
+            </Tabs>
+          </Paper>
+        </div>
         <TabPanel value={value} index={0}>
           <Brief />
         </TabPanel>
