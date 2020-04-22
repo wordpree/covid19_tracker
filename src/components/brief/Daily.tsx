@@ -1,11 +1,19 @@
 import React from "react";
+import { useMediaQuery } from "@material-ui/core";
 import Chart from "../Chart";
 import { DailyCasesContext } from "../context";
 import { IDaily } from "../../util/type";
 
 const Daily = () => {
   const data: IDaily[] = DailyCasesContext();
+  const md = useMediaQuery("(min-width:960px)");
+  const sm = useMediaQuery("(min-width:768px)");
+  const lg = useMediaQuery("(min-width:1244px)");
+
+  const interval = lg ? 3 : md ? 5 : sm ? 9 : 1;
+  const intervalType = sm ? "day" : "month";
   if (data.length === 0) return null;
+
   const lastDate = new Date(data[data.length - 1].reportDate).toDateString();
   const newCases = data.map((item) => ({
     x: new Date(item.reportDate),
@@ -36,8 +44,8 @@ const Daily = () => {
     ],
     axisX: {
       valueFormatString: "DD MMM",
-      interval: 3,
-      intervalType: "day",
+      interval: interval,
+      intervalType: intervalType,
       titleFontColor: "#755E32",
       labelFontColor: "#755E32",
     },

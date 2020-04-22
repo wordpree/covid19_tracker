@@ -47,8 +47,7 @@ const useStyles = makeStyles((theme) => ({
   },
   selected: {
     transition: "all 0.3s",
-    borderTop: "1px inset #fff",
-    background: "#3EB5AF",
+    background: "#42C2BB",
   },
 }));
 
