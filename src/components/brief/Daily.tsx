@@ -43,6 +43,7 @@ const Daily = () => {
       },
     ],
     axisX: {
+      margin: 18,
       valueFormatString: "DD MMM",
       interval: interval,
       intervalType: intervalType,
@@ -62,6 +63,9 @@ const Daily = () => {
         labelFontColor: "#7F6084",
       },
     ],
+    legend: {
+      verticalAlign: "top",
+    },
     data: [
       {
         name: "New cases",

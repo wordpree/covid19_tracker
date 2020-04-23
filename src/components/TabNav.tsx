@@ -5,6 +5,7 @@ import TabPanel from "./TabPanel";
 import MobileNav from "./MobileNav";
 import { BriefCasesProvider, DailyCasesProvider } from "./context";
 import { Brief } from "./brief";
+import Options from "./Options";
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
@@ -54,6 +55,7 @@ const useStyles = makeStyles((theme) => ({
 const TabNav = () => {
   const classes = useStyles();
   const [value, setValue] = useState(0);
+
   const handleChange = (e: ChangeEvent<{}>, value: number) => {
     setValue(value);
   };
@@ -107,7 +109,7 @@ const TabNav = () => {
           <Brief />
         </TabPanel>
         <TabPanel value={value} index={1}>
-          Item Two
+          <Options />
         </TabPanel>
         <TabPanel value={value} index={2}>
           Item Three

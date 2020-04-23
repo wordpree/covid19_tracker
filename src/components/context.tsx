@@ -19,6 +19,7 @@ export const BriefCasesProvider = ({ children }: IBCProps) => {
         recovered,
         active_cases,
         closed_cases,
+        table,
       } = reports[0];
       setBrief({
         cases,
@@ -26,6 +27,7 @@ export const BriefCasesProvider = ({ children }: IBCProps) => {
         recovered,
         active_cases,
         closed_cases,
+        countries: table[0] || [],
       });
     };
     fetchBriefData(url);

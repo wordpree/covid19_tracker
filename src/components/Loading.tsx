@@ -7,7 +7,10 @@ type LdProps = {
 
 const Loading = (props: LdProps) => (
   <div>
-    <LinearProgress value={props.value} style={{ marginTop: "4rem" }} />
+    <LinearProgress
+      value={props.value}
+      style={{ position: "absolute", width: "100%", top: "35%" }}
+    />
   </div>
 );
 

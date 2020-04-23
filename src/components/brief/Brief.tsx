@@ -1,5 +1,7 @@
 import React from "react";
-import { Daily, CasePortion, CaseBar } from "./index";
+import { Daily } from "./index";
+import BarChart from "../BarChart";
+import PieChart from "../PieChart";
 import {
   Card,
   Container,
@@ -9,6 +11,7 @@ import {
 } from "@material-ui/core";
 import Loading from "../Loading";
 import { BriefCasesContext } from "../context";
+import { barDataSort, pieDataSort } from "../../util";
 
 const useStyles = makeStyles({
   title: {
@@ -24,6 +27,10 @@ const useStyles = makeStyles({
 const Brief = () => {
   const data = BriefCasesContext();
   const classes = useStyles();
+
+  const barData = barDataSort(data);
+  const pieData = pieDataSort(data);
+
   return data.hasOwnProperty("cases") ? (
     <Container className={classes.container}>
       <Typography variant="h4" className={classes.title}>
@@ -32,12 +39,12 @@ const Brief = () => {
       <Grid container spacing={4}>
         <Grid item xs={12} md={6}>
           <Card>
-            <CasePortion {...data} />
+            <PieChart data={pieData} />
           </Card>
         </Grid>
         <Grid item xs={12} md={6}>
           <Card>
-            <CaseBar {...data} />
+            <BarChart data={barData} />
           </Card>
         </Grid>
       </Grid>
