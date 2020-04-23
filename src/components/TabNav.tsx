@@ -6,6 +6,7 @@ import MobileNav from "./MobileNav";
 import { BriefCasesProvider, DailyCasesProvider } from "./context";
 import { Brief } from "./brief";
 import Options from "./Options";
+import img from "../assets/covid-19.png";
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
@@ -113,6 +114,7 @@ const TabNav = () => {
         </TabPanel>
         <TabPanel value={value} index={2}>
           Item Three
+          {console.log(img)}
         </TabPanel>
       </DailyCasesProvider>
     </BriefCasesProvider>
