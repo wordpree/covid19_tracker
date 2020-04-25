@@ -12,7 +12,7 @@ const Brief = (props: IBCProps) => {
     backgroundColor: "#F5DEB3",
     theme: "light1",
     title: {
-      padding: 10,
+      padding: 15,
       text: `Novel covid-19 cases bar stasticts - ${new Date().toDateString()}`,
       fontSize: 20,
     },

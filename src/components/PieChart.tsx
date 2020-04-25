@@ -1,4 +1,5 @@
 import React from "react";
+import { useMediaQuery } from "@material-ui/core";
 import Chart from "./Chart";
 import { IPie } from "../util/type";
 
@@ -7,6 +8,8 @@ interface IPCProps {
 }
 
 const CasePortion = ({ data }: IPCProps) => {
+  const md = useMediaQuery("(min-width:500px)");
+  const position = md ? "outside" : "inside";
   const options = {
     animationEnabled: true,
     theme: "light1",
@@ -14,23 +17,20 @@ const CasePortion = ({ data }: IPCProps) => {
     title: {
       text: `Novel covid-19 cases pie stasticts - ${new Date().toDateString()}`,
       fontSize: 20,
-      padding: 10,
+      padding: 15,
     },
-    axisX: {
-      title: "Cases numbers",
-      reversed: true,
+    legend: {
+      verticalAlign: "top",
+      horizontalAlign: "center",
     },
     dataPointMaxWidth: 40,
-    legend: {
-      verticalAlign: "center",
-      horizontalAlign: "left",
-    },
     data: [
       {
         type: "pie",
         startAngle: 90,
         toolTipContent: "<b>{label}</b>: {y}%",
         indexLabel: "{y}%",
+        indexLabelPlacement: position,
         showInLegend: "true",
         legendText: "{label}",
         dataPoints: data,

@@ -3,6 +3,9 @@ import { Paper, Typography, makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
+    position: "fixed",
+    bottom: 0,
+    width: "100%",
     background: "#369E99",
     display: "flex",
     justifyContent: "space-around",
@@ -52,6 +55,10 @@ const Footer = () => {
             className={classes.atag}
             href="https://covid19-docs.chrismichael.now.sh/"
           >
+            Swagger
+          </a>
+          |{" "}
+          <a className={classes.atag} href="https://disease.sh/">
             Chrismichael
           </a>
         </Typography>

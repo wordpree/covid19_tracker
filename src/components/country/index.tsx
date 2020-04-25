@@ -17,7 +17,7 @@ const Country = (props: ICProps) => {
   const pieData = pieDataSortByCountry(props.case);
 
   return (
-    <div>
+    <div style={{ marginBottom: "10rem" }}>
       <div style={{ margin: "2rem auto" }}>
         <Card>
           <BarChart data={barData} />

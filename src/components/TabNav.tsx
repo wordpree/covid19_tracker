@@ -3,10 +3,14 @@ import { Tabs, Tab, makeStyles, Paper, Typography } from "@material-ui/core";
 import { ViewGrid, MapMarker, Map } from "mdi-material-ui";
 import TabPanel from "./TabPanel";
 import MobileNav from "./MobileNav";
-import { BriefCasesProvider, DailyCasesProvider } from "./context";
+import {
+  BriefCasesProvider,
+  DailyCasesProvider,
+  CasesWithMapsProvider,
+} from "./context";
 import { Brief } from "./brief";
 import Options from "./Options";
-import img from "../assets/covid-19.png";
+import MapsApp from "./map";
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
@@ -113,8 +117,9 @@ const TabNav = () => {
           <Options />
         </TabPanel>
         <TabPanel value={value} index={2}>
-          Item Three
-          {console.log(img)}
+          <CasesWithMapsProvider>
+            <MapsApp />
+          </CasesWithMapsProvider>
         </TabPanel>
       </DailyCasesProvider>
     </BriefCasesProvider>

@@ -1,3 +1,25 @@
+export interface IGMaps {
+  updated: Date;
+  country: string;
+  countryInfo: {
+    _id: number;
+    lat: number;
+    long: number;
+    flag: string;
+  };
+  cases: number;
+  todayCases: number;
+  deaths: number;
+  todayDeaths: number;
+  recovered: number;
+  active: number;
+  critical: number;
+  casesPerOneMillion: number;
+  deathsPerOneMillion: number;
+  tests: number;
+  testsPerOneMillion: number;
+}
+
 export interface IBar {
   y: string | number;
   label: string;

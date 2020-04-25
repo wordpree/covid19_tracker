@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { IBrief, IDaily } from "../util/type";
+import { IBrief, IDaily, IGMaps } from "../util/type";
 import { fetchData } from "../util";
 
 interface IBCProps {
@@ -51,3 +51,21 @@ export const DailyCasesProvider = ({ children }: IBCProps) => {
 };
 
 export const DailyCasesContext = () => useContext(dailyCases);
+
+const casesWithMaps = React.createContext([] as IGMaps[]);
+export const CasesWithMapsProvider = ({ children }: IBCProps) => {
+  const [cases, setCases] = useState([] as IGMaps[]);
+  const url = "https://corona.lmao.ninja/v2/countries";
+  useEffect(() => {
+    const fetchBriefData = async (url: string) => {
+      const res = await fetchData(url);
+      setCases(res);
+    };
+    fetchBriefData(url);
+  }, []);
+  return (
+    <casesWithMaps.Provider value={cases}>{children}</casesWithMaps.Provider>
+  );
+};
+
+export const CasesWithMapsContext = () => useContext(casesWithMaps);
