@@ -49,19 +49,23 @@ export const DailyCasesProvider = ({ children }: IBCProps) => {
   }, []);
   return <dailyCases.Provider value={daily}>{children}</dailyCases.Provider>;
 };
-
 export const DailyCasesContext = () => useContext(dailyCases);
 
-const casesWithMaps = React.createContext([] as IGMaps[]);
+const casesWithMaps = React.createContext<IGMaps | null>(null);
 export const CasesWithMapsProvider = ({ children }: IBCProps) => {
-  const [cases, setCases] = useState([] as IGMaps[]);
-  const url = "https://corona.lmao.ninja/v2/countries";
+  const [cases, setCases] = useState<IGMaps | null>(null);
+  const urlCountry = "https://corona.lmao.ninja/v2/countries";
+  const urlAll = "https://corona.lmao.ninja/v2/all";
   useEffect(() => {
-    const fetchBriefData = async (url: string) => {
-      const res = await fetchData(url);
-      setCases(res);
+    const promises = async () => {
+      const promise = [urlAll, urlCountry].map((url) => fetchData(url));
+      const res = await Promise.all(promise);
+      setCases({
+        all: res[0],
+        countries: res[1],
+      });
     };
-    fetchBriefData(url);
+    promises();
   }, []);
   return (
     <casesWithMaps.Provider value={cases}>{children}</casesWithMaps.Provider>
