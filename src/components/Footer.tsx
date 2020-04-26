@@ -14,7 +14,6 @@ const useStyles = makeStyles((theme) => ({
     color: "#BFBFBF",
     [theme.breakpoints.up(768)]: {
       marginLeft: 120,
-      zIndex: -99,
     },
     [theme.breakpoints.down(500)]: {
       flexDirection: "column",
