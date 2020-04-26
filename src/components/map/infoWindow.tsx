@@ -16,6 +16,7 @@ interface IIWProps {
 const useStyles = makeStyles({
   card: {
     background: "#01B3A7",
+    overflow: "scroll",
   },
   typo: {
     color: "#ccc",

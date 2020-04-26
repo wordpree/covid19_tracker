@@ -59,6 +59,9 @@ class GoogleMap extends Component<{ data: IGMaps }, {}> {
     marker.addListener("mouseout", () => {
       setTimeout(() => infoWindow.close(), 500);
     });
+    marker.addListener("click", () => {
+      infoWindow.open(this.map, marker);
+    });
   };
 
   googleMaps = () => {
