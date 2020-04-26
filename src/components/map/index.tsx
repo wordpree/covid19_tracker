@@ -5,7 +5,9 @@ import { CasesWithMapsContext } from "../context";
 const MapsApp = () => {
   const data = CasesWithMapsContext();
   return data && data.hasOwnProperty("all") && data.countries.length ? (
-    <GoogleMap data={data} />
+    <div style={{ marginBottom: "4rem" }}>
+      <GoogleMap data={data} />
+    </div>
   ) : null;
 };
 

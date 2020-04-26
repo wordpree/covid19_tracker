@@ -13,21 +13,38 @@ interface IIWProps {
   case: IGMapsCountry;
 }
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   card: {
-    background: "#01B3A7",
-    overflow: "scroll",
+    background: "none",
+    [theme.breakpoints.up(768)]: {
+      background: "#01B3A7",
+    },
+    overflow: "auto",
   },
   typo: {
-    color: "#ccc",
+    color: "gray",
+    [theme.breakpoints.up(768)]: {
+      color: "#ddd",
+    },
+  },
+  avatar: {
+    [theme.breakpoints.down(768)]: {
+      background: "#ccc",
+    },
   },
   span: {
-    color: "#fff",
+    color: "#000",
     fontWeight: "bold",
     padding: "4px 2px",
     marginLeft: "0.25rem",
+    [theme.breakpoints.up(768)]: {
+      color: "#fff",
+      fontWeight: "bold",
+      padding: "4px 2px",
+      marginLeft: "0.5rem",
+    },
   },
-});
+}));
 
 const InfoWindowContent = (props: IIWProps) => {
   const {
@@ -45,12 +62,12 @@ const InfoWindowContent = (props: IIWProps) => {
   const classes = useStyles();
 
   const info: { [key: string]: number } = {
-    Confirmed_cases: cases || 0,
-    Recovered_cases: recovered || 0,
-    Death_cases: deaths || 0,
-    Critical_cases: critical || 0,
-    Today_cases: todayCases || 0,
-    Today_death: todayDeaths || 0,
+    Confirmed: cases || 0,
+    Recovered: recovered || 0,
+    Death: deaths || 0,
+    Critical: critical || 0,
+    New_cases: todayCases || 0,
+    New_death: todayDeaths || 0,
     tests: tests || 0,
   };
   const lists = Object.keys(info).map((item: string) => (
@@ -63,6 +80,7 @@ const InfoWindowContent = (props: IIWProps) => {
   return (
     <Card className={classes.card}>
       <CardHeader
+        classes={{ avatar: classes.avatar }}
         avatar={<Avatar src={countryInfo.flag} alt={country} />}
         title={country}
         subheader={new Date(updated).toDateString()}
