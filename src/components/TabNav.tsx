@@ -67,60 +67,60 @@ const TabNav = () => {
   return (
     <BriefCasesProvider>
       <DailyCasesProvider>
-        <MobileNav />
-        <div className={`${classes.wrapper} wrapper`}>
-          <Paper className={classes.paper}>
-            <Typography variant="h6" className={classes.title}>
-              Covid-19
-            </Typography>
-            <Tabs
-              classes={{
-                flexContainer: classes.center,
-                indicator: classes.indicator,
-              }}
-              orientation="vertical"
-              value={value}
-              onChange={handleChange}
-              aria-label="tabs navigation"
-            >
-              <Tab
-                label="Global"
-                icon={<ViewGrid />}
+        <CasesWithMapsProvider>
+          <MobileNav />
+          <div className={`${classes.wrapper} wrapper`}>
+            <Paper className={classes.paper}>
+              <Typography variant="h6" className={classes.title}>
+                Covid-19
+              </Typography>
+              <Tabs
                 classes={{
-                  selected: classes.selected,
-                  root: classes.tabRoot,
+                  flexContainer: classes.center,
+                  indicator: classes.indicator,
                 }}
-              />
-              <Tab
-                label="Country"
-                icon={<MapMarker />}
-                classes={{
-                  root: classes.tabRoot,
-                  selected: classes.selected,
-                }}
-              />
-              <Tab
-                label="Map"
-                icon={<Map />}
-                classes={{
-                  root: classes.tabRoot,
-                  selected: classes.selected,
-                }}
-              />
-            </Tabs>
-          </Paper>
-        </div>
-        <TabPanel value={value} index={0}>
-          <Brief />
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-          <Options />
-        </TabPanel>
-        <TabPanel value={value} index={2}>
-          <CasesWithMapsProvider>
+                orientation="vertical"
+                value={value}
+                onChange={handleChange}
+                aria-label="tabs navigation"
+              >
+                <Tab
+                  label="Global"
+                  icon={<ViewGrid />}
+                  classes={{
+                    selected: classes.selected,
+                    root: classes.tabRoot,
+                  }}
+                />
+                <Tab
+                  label="Country"
+                  icon={<MapMarker />}
+                  classes={{
+                    root: classes.tabRoot,
+                    selected: classes.selected,
+                  }}
+                />
+                <Tab
+                  label="Map"
+                  icon={<Map />}
+                  classes={{
+                    root: classes.tabRoot,
+                    selected: classes.selected,
+                  }}
+                />
+              </Tabs>
+            </Paper>
+          </div>
+          <TabPanel value={value} index={0}>
+            <Brief />
+          </TabPanel>
+          <TabPanel value={value} index={1}>
+            <Options />
+          </TabPanel>
+          <TabPanel value={value} index={2}>
             <MapsApp />
-          </CasesWithMapsProvider>
-        </TabPanel>
+          </TabPanel>
+        </CasesWithMapsProvider>
       </DailyCasesProvider>
     </BriefCasesProvider>
   );
