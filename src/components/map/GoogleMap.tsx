@@ -12,16 +12,27 @@ class GoogleMap extends Component<{ data: IGMaps }, {}> {
   private marker: any;
 
   componentDidMount() {
-    const script = document.createElement("script");
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPSJS_KEY}`;
-    script.defer = true;
-    script.async = true;
-    document.body.appendChild(script);
-    script.addEventListener("load", () => {
+    const url = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPSJS_KEY}`;
+    const id = `google-maps-js-api-${process.env.REACT_APP_GOOGLE_MAPSJS_KEY}`;
+    const node = document.getElementById(id);
+
+    if (!node) {
+      const script = document.createElement("script");
+      script.setAttribute("id", id);
+      script.src = url;
+      script.defer = true;
+      script.async = true;
+      document.head.appendChild(script);
+      script.addEventListener("load", () => {
+        this.map = this.googleMaps();
+        this.marker = this.googleMarker();
+      });
+    } else {
       this.map = this.googleMaps();
       this.marker = this.googleMarker();
-    });
+    }
   }
+
   makeMarker = (option: any, position: any, scale: number) =>
     new window.google.maps.Marker({
       position,
@@ -56,9 +67,6 @@ class GoogleMap extends Component<{ data: IGMaps }, {}> {
     marker.addListener("mouseover", () => {
       infoWindow.open(this.map, marker);
     });
-    // marker.addListener("mouseout", () => {
-    //   setTimeout(() => infoWindow.close(), 500);
-    // });
     marker.addListener("click", () => {
       infoWindow.open(this.map, marker);
     });
@@ -69,6 +77,10 @@ class GoogleMap extends Component<{ data: IGMaps }, {}> {
       center: { lat: -27, lng: 133 },
       zoom: 3,
       styles: gmapStyles as any,
+      disableDefaultUI: true,
+      zoomControl: true,
+      scaleControl: true,
+      fullscreenControl: true,
     };
     if (this.googleMapRef && this.googleMapRef.current) {
       return new window.google.maps.Map(this.googleMapRef.current, options);
