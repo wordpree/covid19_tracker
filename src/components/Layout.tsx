@@ -5,7 +5,9 @@ import Footer from "./Footer";
 const Layout = () => {
   return (
     <div>
-      <TabNav />
+      <div style={{ minHeight: "90vh" }}>
+        <TabNav />
+      </div>
       <Footer />
     </div>
   );

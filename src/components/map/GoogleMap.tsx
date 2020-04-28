@@ -74,7 +74,7 @@ class GoogleMap extends Component<{ data: IGMaps }, {}> {
 
   googleMaps = () => {
     const options = {
-      center: { lat: -27, lng: 133 },
+      center: { lat: 13, lng: 122 },
       zoom: 3,
       styles: gmapStyles as any,
       disableDefaultUI: true,
@@ -92,7 +92,7 @@ class GoogleMap extends Component<{ data: IGMaps }, {}> {
       <div
         id="google-maps"
         ref={this.googleMapRef}
-        style={{ width: "100%", height: "75vh" }}
+        style={{ width: "100%", height: "100vh" }}
       ></div>
     );
   }

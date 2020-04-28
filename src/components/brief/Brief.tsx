@@ -20,7 +20,7 @@ const useStyles = makeStyles({
     color: "#4F4F4F",
     fontWeight: "bold",
   },
-  container: { margin: "3rem auto 12rem" },
+  container: { margin: "3rem auto" },
   card: { marginTop: "3rem" },
 });
 

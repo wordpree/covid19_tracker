@@ -5,7 +5,7 @@ import spinner from "../../assets/Spinner.svg";
 const MapsApp = () => {
   const data = CasesWithMapsContext();
   return data && data.hasOwnProperty("all") && data.countries.length ? (
-    <div style={{ marginBottom: "4rem" }}>
+    <div style={{ marginBottom: "2rem" }}>
       <GoogleMap data={data} />
     </div>
   ) : (

@@ -3,9 +3,6 @@ import { Paper, Typography, makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    position: "fixed",
-    bottom: 0,
-    width: "100%",
     background: "#369E99",
     display: "flex",
     justifyContent: "space-around",
