@@ -13,6 +13,15 @@ const theme = createMuiTheme({
       main: "#035755",
     },
   },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 768,
+      md: 960,
+      lg: 1280,
+      xl: 1920,
+    },
+  },
   typography: {
     fontFamily: [
       "Gentium Basic",

@@ -1,6 +1,7 @@
 import React from "react";
 import { Typography, makeStyles } from "@material-ui/core";
-import logo from "../svg/logo.svg";
+import MobileMenu from "./MobileMenu";
+import logo from "../../svg/logo.svg";
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -21,7 +22,10 @@ const useStyles = makeStyles((theme) => ({
     marginRight: "0.5rem",
   },
   nav: {
-    display: "flex",
+    display: "none",
+    [theme.breakpoints.up("md")]: {
+      display: "flex",
+    },
   },
   menu: {
     color: "#035755",
@@ -33,6 +37,12 @@ const useStyles = makeStyles((theme) => ({
       border: "2px solid #FB4C47",
       borderRadius: 40,
       padding: "4px 14px",
+    },
+  },
+  mobile: {
+    display: "inline-block",
+    [theme.breakpoints.up("md")]: {
+      display: "none",
     },
   },
 }));
@@ -57,6 +67,9 @@ const Header = () => {
             {m}
           </Typography>
         ))}
+      </div>
+      <div className={classes.mobile}>
+        <MobileMenu menu={menu} />
       </div>
     </div>
   );
