@@ -77,14 +77,14 @@ const Banner = () => {
               in our community. This means that it could spread widely and
               quickly.
             </Typography>
-            {sm && <CustomizedBtn>Learn More</CustomizedBtn>}
+            {sm && <CustomizedBtn color="primary">Learn More</CustomizedBtn>}
           </div>
         </Grid>
         <Grid item xs={12} sm={6} className={classes.gridRight}>
           <div>
             <img src={banner} alt="stay-at-home" className={classes.img} />
           </div>
-          {!sm && <CustomizedBtn>Learn More</CustomizedBtn>}
+          {!sm && <CustomizedBtn color="primary">Learn More</CustomizedBtn>}
         </Grid>
       </Grid>
     </div>

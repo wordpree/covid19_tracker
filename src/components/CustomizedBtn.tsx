@@ -3,22 +3,24 @@ import { Button, makeStyles } from "@material-ui/core";
 
 interface ICProps {
   children: React.ReactNode;
+  color: "primary" | "secondary";
 }
 
 const useStyles = makeStyles({
   btn: {
-    borderRadius: 40,
+    borderRadius: 35,
     fontWeight: "bold",
     textTransform: "capitalize",
+    width: 118,
   },
 });
 
-const CustomizedBtn = ({ children }: ICProps) => {
+const CustomizedBtn = ({ children, color }: ICProps) => {
   const classes = useStyles();
   return (
     <Button
       variant="contained"
-      color="primary"
+      color={color}
       className={classes.btn}
       size="medium"
     >

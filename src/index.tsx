@@ -10,7 +10,7 @@ const theme = createMuiTheme({
       main: "#FB4C47",
     },
     secondary: {
-      main: "#035755",
+      main: "rgba(250, 86, 82, 0.15)",
     },
   },
   breakpoints: {

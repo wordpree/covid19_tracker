@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     top: 0,
     right: 0,
     width: "80%",
-    maxWidth: 450,
+    maxWidth: 350,
     height: 550,
     background: "linear-gradient(180deg,#FFF 0%,#FFF1F4 100%)",
     zIndex: 99,

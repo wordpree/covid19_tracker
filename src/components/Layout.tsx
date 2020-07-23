@@ -4,6 +4,7 @@ import Header from "./header/Header";
 import Banner from "./Banner";
 import TabNav from "./TabNav";
 import Footer from "./Footer";
+import VirusInfo from "./VirusInfo";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -26,6 +27,7 @@ const Layout = () => {
       >
         <Header />
         <Banner />
+        <VirusInfo />
       </div>
       {/* <div style={{ minHeight: "90vh" }}>
           <TabNav />
