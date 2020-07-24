@@ -1,6 +1,8 @@
 import React from "react";
 import { makeStyles, Typography, useMediaQuery } from "@material-ui/core";
 import CustomizedBtn from "./CustomizedBtn";
+import TextContent from "./TextContent";
+import { virusInfo } from "../content";
 import virus from "../svg/virus.svg";
 import virusLight from "../svg/virusLight.svg";
 
@@ -63,17 +65,6 @@ const useStyles = makeStyles((theme) => ({
       maxWidth: 450,
     },
   },
-  alert: {
-    color: "#FA5652",
-    fontWeight: "bold",
-  },
-  title: {
-    fontWeight: "bold",
-    color: "#035755",
-  },
-  content: {
-    padding: "1.5rem 0",
-  },
   virusLight: {
     display: "none",
     [theme.breakpoints.up("sm")]: {
@@ -103,19 +94,7 @@ const VirusInfo = () => {
         </div>
         <div className={classes.flexRight}>
           <div className={classes.contentWrapper}>
-            <Typography className={classes.alert}>What Is Covid-19</Typography>
-            <Typography variant="h4" className={classes.title}>
-              Coronavirus
-            </Typography>
-            <Typography variant="body2" className={classes.content}>
-              COVID-19 is a respiratory illness caused by a new virus. Symptoms
-              include fever, coughing, a sore throat and shortness of breath.
-              The virus can spread from person to person. These can range from
-              the common cold to more serious diseases.COVID-19 is a disease
-              caused by a new form of coronavirus. It was first reported in
-              December 2019 in Wuhan City in China. Currently there is no
-              treatment for COVID-19.
-            </Typography>
+            <TextContent {...virusInfo} />
             {sm && (
               <CustomizedBtn color="secondary">Let Us Start</CustomizedBtn>
             )}

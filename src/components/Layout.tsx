@@ -2,6 +2,7 @@ import React from "react";
 import { Container, makeStyles } from "@material-ui/core";
 import Header from "./header/Header";
 import Banner from "./Banner";
+import Contagion from "./Contagion";
 import TabNav from "./TabNav";
 import Footer from "./Footer";
 import VirusInfo from "./VirusInfo";
@@ -28,6 +29,7 @@ const Layout = () => {
         <Header />
         <Banner />
         <VirusInfo />
+        <Contagion />
       </div>
       {/* <div style={{ minHeight: "90vh" }}>
           <TabNav />
