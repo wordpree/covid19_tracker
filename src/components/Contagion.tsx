@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
   gridWrapper: {
     position: "relative",
+    padding: "1rem",
     [theme.breakpoints.up("sm")]: {
       padding: "0 3rem",
     },
@@ -35,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
   card: {
     maxWidth: 468,
     margin: "0 auto",
+    borderRadius: 10,
     [theme.breakpoints.up("md")]: {
       maxWidth: "none",
     },

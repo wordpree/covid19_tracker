@@ -4,6 +4,7 @@ import Header from "./header/Header";
 import Banner from "./Banner";
 import Contagion from "./Contagion";
 import Symptomps from "./Symptomps";
+import Protect from "./Protect";
 import TabNav from "./TabNav";
 import Footer from "./Footer";
 import VirusInfo from "./VirusInfo";
@@ -32,6 +33,7 @@ const Layout = () => {
         <VirusInfo />
         <Contagion />
         <Symptomps />
+        <Protect />
       </div>
       {/* <div style={{ minHeight: "90vh" }}>
           <TabNav />

@@ -1,4 +1,12 @@
-import { air, contact, object } from "./svg";
+import {
+  air,
+  contact,
+  object,
+  washing,
+  avoidContact,
+  noseRag,
+  mask,
+} from "./svg";
 
 export const banner = {
   alert: "COVID-19 Alert",
@@ -47,3 +55,37 @@ export const symptomps = {
   content:
     "Symptoms of COVID-19 can range from mild illness to pneumonia. Some people will recover easily, and others may get very sick very quickly. People with coronavirus may experience symptoms such as runny nose, headache, muscle or joint pains, nausea, diarrhoea, vomiting, loss of sense of smell, altered sense of taste, loss of appetite and fatigue",
 };
+
+export const protect = {
+  alert: "COVID-19",
+  title: "What Should We Do",
+  content:
+    "Everyone must do the following things to slow the spread of COVID-19 and protect those who are most at risk.",
+};
+
+export const protectMeasure = [
+  {
+    title: "Wear Masks",
+    content:
+      "Face masks are now either required or recommended in Victoria because of the higher rates of community transmission of coronavirus there. People in NSW should consider wearing a face mask in situations where physical distancing is not possible.",
+    image: mask,
+  },
+  {
+    title: "Wash Your Hand",
+    content:
+      "wash your hands often with soap and water. This includes before and after eating and after going to the toilet. Use alcohol-based hand sanitisers when you can’t use soap and water. Avoid touching your eyes, nose and mouth.",
+    image: washing,
+  },
+  {
+    title: "Disinfect Surface",
+    content:
+      "Clean and disinfect surfaces you use often such as benchtops, desks and doorknobs. Clean and disinfect objects you use often such as mobile phones, keys, wallets and work passes",
+    image: noseRag,
+  },
+  {
+    title: "Avoid Public Gatherings",
+    content:
+      "Everyone should continue keeping their distance from other people whenever possible. When we are around other people, it is important we practice physical distancing – also called social distancing",
+    image: avoidContact,
+  },
+];

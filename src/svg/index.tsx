@@ -7,3 +7,7 @@ export { default as virus } from "./virus.svg";
 export { default as virusLight } from "./virusLight.svg";
 export { default as leftLight } from "./leftLight.svg";
 export { default as symptomps } from "./symptomps.svg";
+export { default as mask } from "./mask.svg";
+export { default as noseRag } from "./noseRag.svg";
+export { default as avoidContact } from "./avoidContact.svg";
+export { default as washing } from "./washing.svg";

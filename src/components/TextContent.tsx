@@ -26,12 +26,10 @@ const TextContent = ({ title, alert, content }: ITProps) => {
   return (
     <>
       <Typography className={classes.alert}>{alert}</Typography>
-      <Typography variant="h4" className={classes.title}>
+      <Typography variant="h3" className={classes.title}>
         {title}
       </Typography>
-      <Typography variant="body2" className={classes.content}>
-        {content}
-      </Typography>
+      <Typography className={classes.content}>{content}</Typography>
     </>
   );
 };
