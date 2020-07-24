@@ -17,7 +17,7 @@ const useStyles = makeStyles({
     color: "#035755",
   },
   content: {
-    padding: "1.5rem 0",
+    padding: "1.5rem 0.5rem 0.5rem",
   },
 });
 

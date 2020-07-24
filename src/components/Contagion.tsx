@@ -28,7 +28,6 @@ const useStyles = makeStyles((theme) => ({
   },
   gridWrapper: {
     position: "relative",
-    overflow: "hidden",
     [theme.breakpoints.up("sm")]: {
       padding: "0 3rem",
     },
@@ -43,10 +42,11 @@ const useStyles = makeStyles((theme) => ({
   media: {
     maxWidth: 240,
     margin: "0 auto",
+    paddingTop: "1.5rem",
   },
   cardContent: {
     textAlign: "center",
-    padding: "2.5rem 1rem",
+    padding: "2.5rem 1rem !important",
     "&>h6": {
       color: "#035755",
       fontWeight: "bold",
@@ -70,9 +70,9 @@ const Contagion = () => {
       </div>
       <div className={classes.gridWrapper}>
         <Grid container spacing={3}>
-          {contagionCard.map((c, index) => (
+          {contagionCard.map((c) => (
             <Grid item xs={12} md={4} key={c.title}>
-              <Card className={classes.card}>
+              <Card className={classes.card} raised>
                 <CardMedia
                   src={c.image}
                   className={classes.media}

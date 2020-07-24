@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles, Typography, useMediaQuery } from "@material-ui/core";
+import { makeStyles, useMediaQuery } from "@material-ui/core";
 import CustomizedBtn from "./CustomizedBtn";
 import TextContent from "./TextContent";
 import { virusInfo } from "../content";
@@ -103,7 +103,7 @@ const VirusInfo = () => {
       </div>
       {!sm && <CustomizedBtn color="secondary">Let Us Start</CustomizedBtn>}
       <div className={classes.virusLight}>
-        <img src={virusLight} />
+        <img src={virusLight} alt="virus" />
       </div>
     </div>
   );

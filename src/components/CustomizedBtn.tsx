@@ -12,6 +12,7 @@ const useStyles = makeStyles({
     fontWeight: "bold",
     textTransform: "capitalize",
     width: 118,
+    marginTop: "1rem",
   },
 });
 

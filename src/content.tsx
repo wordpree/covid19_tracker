@@ -40,3 +40,10 @@ export const contagionCard = [
       "Touching objects or surfaces that have droplets from an infected person",
   },
 ];
+
+export const symptomps = {
+  alert: "COVID-19",
+  title: "Symptomps",
+  content:
+    "Symptoms of COVID-19 can range from mild illness to pneumonia. Some people will recover easily, and others may get very sick very quickly. People with coronavirus may experience symptoms such as runny nose, headache, muscle or joint pains, nausea, diarrhoea, vomiting, loss of sense of smell, altered sense of taste, loss of appetite and fatigue",
+};
