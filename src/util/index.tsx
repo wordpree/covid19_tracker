@@ -198,3 +198,15 @@ export const barDataSortByCountry = (data: Country, type: string) => {
   ];
   return type === "new" ? retNew : ret;
 };
+
+export const getDate = (date: number) => {
+  const options = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    timeZoneName: "short",
+  };
+  return new Date(date).toLocaleString("en-Au", options);
+};

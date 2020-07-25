@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { StyledDiv } from "./styled";
 import gmapStyles from "./mapStyle";
 import { IGMaps, IGMapsCountry } from "../../util/type";
 import { renderToString } from "react-dom/server";
@@ -10,10 +11,11 @@ class GoogleMap extends Component<{ data: IGMaps }, {}> {
   > | null = React.createRef();
   private map: any;
   private marker: any;
+  private api = "AIzaSyCJvV_z3MsVGB0ksNzK5EiNLcMB61v4uIw";
 
   componentDidMount() {
-    const url = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPSJS_KEY}`;
-    const id = `google-maps-js-api-${process.env.REACT_APP_GOOGLE_MAPSJS_KEY}`;
+    const url = `https://maps.googleapis.com/maps/api/js?key=${this.api}`;
+    const id = `google-maps-js-api-${this.api}`;
     const node = document.getElementById(id);
 
     if (!node) {
@@ -74,7 +76,7 @@ class GoogleMap extends Component<{ data: IGMaps }, {}> {
 
   googleMaps = () => {
     const options = {
-      center: { lat: 13, lng: 122 },
+      center: { lat: -34.397, lng: 150.644 },
       zoom: 3,
       styles: gmapStyles as any,
       disableDefaultUI: true,
@@ -88,13 +90,7 @@ class GoogleMap extends Component<{ data: IGMaps }, {}> {
   };
 
   render() {
-    return (
-      <div
-        id="google-maps"
-        ref={this.googleMapRef}
-        style={{ width: "100%", height: "100vh" }}
-      ></div>
-    );
+    return <StyledDiv id="google-maps" ref={this.googleMapRef} />;
   }
 }
 

@@ -5,9 +5,10 @@ import Banner from "./Banner";
 import Contagion from "./Contagion";
 import Symptomps from "./Symptomps";
 import Protect from "./Protect";
-import TabNav from "./TabNav";
+import CaseMap from "./CaseMap";
 import Footer from "./Footer";
 import VirusInfo from "./VirusInfo";
+import { CasesWithMapsProvider } from "./context";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -34,10 +35,10 @@ const Layout = () => {
         <Contagion />
         <Symptomps />
         <Protect />
+        <CasesWithMapsProvider>
+          <CaseMap />
+        </CasesWithMapsProvider>
       </div>
-      {/* <div style={{ minHeight: "90vh" }}>
-          <TabNav />
-        </div> */}
       {/* <Footer /> */}
     </Container>
   );
