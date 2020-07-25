@@ -1,7 +1,8 @@
 import React from "react";
 import { protect, protectMeasure } from "../content";
 import TextContent from "./TextContent";
-import { Typography, makeStyles } from "@material-ui/core";
+import { Typography, makeStyles, useMediaQuery } from "@material-ui/core";
+import { virusGreen, virusGnR } from "../svg";
 
 const useStyles = makeStyles((theme) => ({
   entry: {
@@ -15,7 +16,29 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     flexDirection: "column",
-    [theme.breakpoints.up("sm")]: {},
+    position: "relative",
+    "&>div>img": {
+      display: "none",
+      [theme.breakpoints.up("md")]: {
+        display: "inherit",
+      },
+    },
+  },
+  virus: {
+    position: "absolute",
+    top: "15%",
+    left: 0,
+    "&>img": {
+      maxWidth: 60,
+    },
+  },
+  virusGnR: {
+    position: "absolute",
+    bottom: "-2%",
+    right: 0,
+    "&>img": {
+      maxWidth: 60,
+    },
   },
   contentWrapper: {
     display: "flex",
@@ -30,9 +53,6 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: "row-reverse",
         justifyContent: "center",
       },
-    },
-    "&.reverse $content": {
-      paddingLeft: "0.75rem",
     },
     "&>div": {
       [theme.breakpoints.up("sm")]: {
@@ -50,11 +70,12 @@ const useStyles = makeStyles((theme) => ({
       maxWidth: "none",
     },
     "&>p": {
+      paddingTop: "0.5rem",
       [theme.breakpoints.up("lg")]: {
         fontSize: "1.25rem",
       },
       [theme.breakpoints.up("sm")]: {
-        lineHeight: 2,
+        lineHeight: 1.75,
       },
     },
   },
@@ -64,7 +85,7 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     "&::before": {
       display: "none",
-      [theme.breakpoints.up("md")]: {
+      [theme.breakpoints.up(1124)]: {
         display: "inherit",
         fontSize: "1rem",
         position: "absolute",
@@ -103,6 +124,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Protect = () => {
   const classes = useStyles();
+  const lg = useMediaQuery("(min-width:1200px)");
   return (
     <div className={classes.entry}>
       <div className={classes.textWrapper}>
@@ -118,7 +140,7 @@ const Protect = () => {
           >
             <div className={classes.content}>
               <Typography
-                variant="h4"
+                variant={lg ? "h4" : "h5"}
                 className={`header${i} ${classes.header}`}
               >
                 {p.title}
@@ -130,6 +152,12 @@ const Protect = () => {
             </div>
           </div>
         ))}
+        <div className={classes.virus}>
+          <img src={virusGreen} alt="virus" />
+        </div>
+        <div className={classes.virusGnR}>
+          <img src={virusGnR} alt="virus" />
+        </div>
       </div>
     </div>
   );

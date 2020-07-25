@@ -9,11 +9,14 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "6rem",
   },
   contentWrapper: {
-    padding: "0.5rem",
+    padding: "0.5rem 1.5rem",
     margin: "0 auto",
     minWidth: "65%",
     maxWidth: 550,
-    textAlign: "center",
+    textAlign: "left",
+    [theme.breakpoints.up("sm")]: {
+      textAlign: "center",
+    },
   },
   img: {
     width: "100%",

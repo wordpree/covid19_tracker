@@ -11,3 +11,5 @@ export { default as mask } from "./mask.svg";
 export { default as noseRag } from "./noseRag.svg";
 export { default as avoidContact } from "./avoidContact.svg";
 export { default as washing } from "./washing.svg";
+export { default as virusGreen } from "./virusGreen.svg";
+export { default as virusGnR } from "./virusGnR.svg";

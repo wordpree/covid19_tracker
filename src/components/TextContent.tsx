@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles, Typography } from "@material-ui/core";
+import { makeStyles, Typography, useMediaQuery } from "@material-ui/core";
 
 interface ITProps {
   title: string;
@@ -23,10 +23,11 @@ const useStyles = makeStyles({
 
 const TextContent = ({ title, alert, content }: ITProps) => {
   const classes = useStyles();
+  const lg = useMediaQuery("(min-width:1200px)");
   return (
     <>
       <Typography className={classes.alert}>{alert}</Typography>
-      <Typography variant="h3" className={classes.title}>
+      <Typography variant={lg ? "h3" : "h4"} className={classes.title}>
         {title}
       </Typography>
       <Typography className={classes.content}>{content}</Typography>
