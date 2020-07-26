@@ -1,8 +1,8 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core";
+import { makeStyles, useMediaQuery } from "@material-ui/core";
 import { symptomps } from "../content";
 import TextContent from "./TextContent";
-import { symptomps as symptompsSvg } from "../svg";
+import { symptomps as symptompsSvg, smSymptomps } from "../svg";
 
 const useStyles = makeStyles((theme) => ({
   entry: {
@@ -33,13 +33,15 @@ const useStyles = makeStyles((theme) => ({
 
 const Symptomps = () => {
   const classes = useStyles();
+  const sm = useMediaQuery("(min-width:450px)");
+  const img = sm ? symptompsSvg : smSymptomps;
   return (
     <div className={classes.entry}>
       <div className={classes.contentWrapper}>
         <TextContent {...symptomps} />
       </div>
       <div>
-        <img src={symptompsSvg} alt="symptomps" className={classes.img} />
+        <img src={img} alt="symptomps" className={classes.img} />
       </div>
     </div>
   );
