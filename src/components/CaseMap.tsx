@@ -1,17 +1,12 @@
-import React from "react";
-import { ChevronLeft, ChevronRight } from "mdi-material-ui";
-import {
-  Grid,
-  makeStyles,
-  Typography,
-  IconButton,
-  Divider,
-} from "@material-ui/core";
+import React, { useState } from "react";
+import { Grid, makeStyles } from "@material-ui/core";
 import { CasesWithMapsContext } from "./context";
+import { getDate, sortGlobalData } from "../util";
 import CountryCase from "./CountryCase";
-import MapsApp from "./map";
+import GlobalCase from "./GlobalCase";
 import TextContent from "./TextContent";
-import { getDate } from "../util";
+import CaseIndexIcon from "./CaseIndexIcon";
+import MapsApp from "./map";
 
 const useStyles = makeStyles((theme) => ({
   entry: {
@@ -21,9 +16,22 @@ const useStyles = makeStyles((theme) => ({
       padding: "2rem",
     },
   },
+  case: {
+    display: "flex",
+    justifyContent: "center",
+    paddingBottom: "2.5rem",
+    flexDirection: "column",
+    [theme.breakpoints.up(600)]: {
+      flexDirection: "row",
+    },
+  },
   textWrapper: {
     paddingBottom: "2.5rem",
     textAlign: "center",
+    "&>p:last-child": {
+      fontSize: "0.8rem",
+      color: "#7e7e7e",
+    },
   },
   country: {
     boxShadow: " 0 7px 95px rgba(0,0,0,0.07)",
@@ -33,29 +41,10 @@ const useStyles = makeStyles((theme) => ({
       borderBottomRightRadius: 10,
     },
     "&>div": {
-      padding: "2rem",
-    },
-  },
-  titleWrapper: {
-    display: "flex",
-    alignItems: "center",
-    padding: "1rem 0.5rem",
-  },
-  title: {
-    color: "#035755",
-    fontWeight: "bold",
-    marginRight: "auto",
-  },
-  iconBtn: {
-    background: "#fff",
-    display: "flex",
-    boxShadow: "0 5px 50px rgba(87,1,0,0.1)",
-    "&>span": {
-      borderRadius: 0,
-    },
-    "&>hr": {
-      height: 20,
-      alignSelf: "center",
+      padding: 0,
+      [theme.breakpoints.up("md")]: {
+        padding: "2rem",
+      },
     },
   },
 }));
@@ -63,6 +52,9 @@ const useStyles = makeStyles((theme) => ({
 const CaseMap = () => {
   const classes = useStyles();
   const data = CasesWithMapsContext();
+  const [count, setCount] = useState(0);
+  const MAX_INDEX = 5;
+  const MIN_INDEX = 0;
   if (
     !data ||
     !data.hasOwnProperty("all") ||
@@ -71,15 +63,27 @@ const CaseMap = () => {
     return null;
   }
   const { all, countries } = data;
+  const globalCase = sortGlobalData(all);
   const outbreak = {
     alert: "COVID-19",
     title: "Coronavirus Outbreak Situation",
     content: `Update: ${getDate(all.updated)}`,
   };
+  const handleClickLeft = () => {
+    count === MIN_INDEX ? setCount(MAX_INDEX) : setCount((prev) => prev - 1);
+  };
+  const handleClickRight = () => {
+    count === MAX_INDEX ? setCount(MIN_INDEX) : setCount((prev) => prev + 1);
+  };
   return (
     <div className={classes.entry}>
       <div className={classes.textWrapper}>
         <TextContent {...outbreak} />
+      </div>
+      <div className={classes.case}>
+        {globalCase.map((g) => (
+          <GlobalCase {...g} key={g.title} />
+        ))}
       </div>
       <Grid container>
         <Grid item xs={12} md={8}>
@@ -87,33 +91,13 @@ const CaseMap = () => {
         </Grid>
         <Grid item xs={12} md={4} className={classes.country}>
           <div>
-            <div className={classes.titleWrapper}>
-              <Typography variant="h6" className={classes.title}>
-                Live Reports
-              </Typography>
-              <div className={classes.iconBtn}>
-                <IconButton
-                  color="secondary"
-                  aria-label="left"
-                  component="span"
-                  size="small"
-                >
-                  <ChevronLeft />
-                </IconButton>
-                <Divider orientation="vertical" flexItem />
-                <IconButton
-                  color="primary"
-                  aria-label="right"
-                  component="span"
-                  size="small"
-                >
-                  <ChevronRight />
-                </IconButton>
-              </div>
-            </div>
+            <CaseIndexIcon
+              handleLeft={handleClickLeft}
+              handleRight={handleClickRight}
+            />
             {countries
               .sort((a, b) => b.cases - a.cases)
-              .slice(0, 5)
+              .slice(MAX_INDEX * count, MAX_INDEX * (count + 1))
               .map((c) => (
                 <CountryCase key={c.country} data={c} />
               ))}

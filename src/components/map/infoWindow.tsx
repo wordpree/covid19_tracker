@@ -15,33 +15,27 @@ interface IIWProps {
 
 const useStyles = makeStyles((theme) => ({
   card: {
-    background: "none",
-    [theme.breakpoints.up(768)]: {
-      background: "#01B3A7",
-    },
+    background: "rgba(250, 86, 82, 0.15)",
     overflow: "auto",
   },
   typo: {
-    color: "gray",
-    [theme.breakpoints.up(768)]: {
-      color: "#ddd",
-    },
+    color: "#035755",
+    fontWeight: "bold",
+    fontSize: "0.8rem",
   },
   avatar: {
-    [theme.breakpoints.down(768)]: {
-      background: "#ccc",
-    },
+    borderRadius: 5,
   },
   span: {
-    color: "#000",
+    color: "#7B682D",
     fontWeight: "bold",
     padding: "4px 2px",
     marginLeft: "0.25rem",
-    [theme.breakpoints.up(768)]: {
-      color: "#fff",
-      fontWeight: "bold",
-      padding: "4px 2px",
-      marginLeft: "0.5rem",
+  },
+  content: {
+    padding: "0.5rem !important",
+    [theme.breakpoints.up("sm")]: {
+      padding: "1rem !important",
     },
   },
 }));
@@ -80,12 +74,18 @@ const InfoWindowContent = (props: IIWProps) => {
   return (
     <Card className={classes.card}>
       <CardHeader
-        classes={{ avatar: classes.avatar }}
-        avatar={<Avatar src={countryInfo.flag} alt={country} />}
+        avatar={
+          <Avatar
+            src={countryInfo.flag}
+            alt={country}
+            className={classes.avatar}
+          />
+        }
         title={country}
         subheader={new Date(updated).toDateString()}
-      ></CardHeader>
-      <CardContent>{lists}</CardContent>
+        subheaderTypographyProps={{ variant: "caption" }}
+      />
+      <CardContent className={classes.content}>{lists}</CardContent>
     </Card>
   );
 };
