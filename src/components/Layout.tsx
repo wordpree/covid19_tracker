@@ -20,8 +20,13 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   root: {
-    background: "linear-gradient(180deg,#FFF1F4 0%,#FFF 100%)",
+    background:
+      "linear-gradient(180deg,#FFF1F4 0%,rgba(255,241,241,0.1)  100%)",
     overflow: "hidden",
+  },
+  cAft: {
+    background:
+      "linear-gradient(180deg,rgba(255,241,241,0.1)  0%,rgba(255,241,241,0.4) 100%)",
   },
 }));
 
@@ -39,9 +44,11 @@ const Layout = () => {
         <CasesWithMapsProvider>
           <CaseMap />
         </CasesWithMapsProvider>
-        <Contact />
+        <div className={classes.cAft}>
+          <Contact />
+          <Footer />
+        </div>
       </div>
-      {/* <Footer /> */}
     </Container>
   );
 };

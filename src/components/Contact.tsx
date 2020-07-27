@@ -3,10 +3,20 @@ import { makeStyles, Typography } from "@material-ui/core";
 import { Phone } from "mdi-material-ui";
 import { attention } from "../content";
 import TextContent from "./TextContent";
-
+import { footerVirus } from "../svg";
 const uesStyles = makeStyles((theme) => ({
   entry: {
-    marginTop: "5rem",
+    marginTop: "6rem",
+    marginBottom: "5rem",
+    position: "relative",
+  },
+  img: {
+    position: "absolute",
+    right: 0,
+    bottom: "-5%",
+    "&>img": {
+      maxWidth: 88,
+    },
   },
   textWrapper: {
     paddingLeft: "0.75rem",
@@ -19,12 +29,11 @@ const uesStyles = makeStyles((theme) => ({
     marginTop: "1rem",
     padding: "1rem",
     maxWidth: "none",
-    background: "#fffefd",
     marginLeft: "1rem",
     borderLeft: "4px solid #7DCDCD",
     [theme.breakpoints.up("sm")]: {
       maxWidth: "80%",
-      padding: "2rem",
+      padding: "1rem 2rem",
     },
   },
   phone: {
@@ -37,6 +46,11 @@ const uesStyles = makeStyles((theme) => ({
     fontSize: "1rem",
     fontWeight: "bold",
     paddingLeft: "1rem",
+    color: "#035755",
+  },
+  info: {
+    fontSize: "1rem",
+    fontWeight: "bold",
     color: "#035755",
   },
 }));
@@ -79,6 +93,20 @@ const Contact = () => {
             .
           </span>
         </div>
+        <div>
+          <span>
+            Find more information from{" "}
+            <a
+              href="https://www.health.gov.au/news/health-alerts/novel-coronavirus-2019-ncov-health-alert"
+              className={classes.info}
+            >
+              Australia health government webpage
+            </a>
+          </span>
+        </div>
+      </div>
+      <div className={classes.img}>
+        <img src={footerVirus} alt="virus" />
       </div>
     </div>
   );

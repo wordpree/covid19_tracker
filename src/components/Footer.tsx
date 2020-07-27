@@ -1,66 +1,82 @@
 import React from "react";
-import { Paper, Typography, makeStyles } from "@material-ui/core";
+import { Typography, makeStyles } from "@material-ui/core";
+import Navigation from "./Navigation";
+import { Youtube, Reddit, Linkedin, Twitter } from "mdi-material-ui";
 
 const useStyles = makeStyles((theme) => ({
-  paper: {
-    background: "#369E99",
+  root: {
+    marginTop: "2rem",
+    padding: "2rem 1.5rem",
+    textAlign: "center",
+  },
+  nav: {
     display: "flex",
-    justifyContent: "space-around",
     alignItems: "center",
-    padding: "1rem 0.25rem",
-    color: "#BFBFBF",
-    [theme.breakpoints.up(768)]: {
-      marginLeft: 120,
+    flexDirection: "column",
+    [theme.breakpoints.up("md")]: {
+      flexDirection: "row",
     },
-    [theme.breakpoints.down(500)]: {
+    "&>div": {
+      margin: "1rem 0",
+      [theme.breakpoints.up("md")]: {
+        flex: "0 1 33.3%",
+        marginBottom: "inherit",
+      },
+    },
+    "&>div:nth-child(2)": {
+      display: "flex",
       flexDirection: "column",
-      textAlign: "center",
+      textAlign: "left",
+      [theme.breakpoints.up("sm")]: {
+        flexDirection: "row",
+      },
+    },
+    "&>div:nth-child(1)": {
+      "&>h6": {
+        fontSize: "0.9rem",
+      },
+      "&>img": {
+        maxWidth: 30,
+        marginRight: "0.75rem",
+      },
+    },
+    "&>div:nth-child(2)>a": {
+      fontSize: "0.8rem",
     },
   },
-  atag: {
-    color: "inherit",
+  rights: {
+    margin: "0 auto",
+    padding: "1rem",
+    display: "block",
+    color: "#035755",
   },
 }));
 
 const Footer = () => {
   const classes = useStyles();
+  const socialIcons = [
+    <Linkedin fontSize="small" className="linkedin" />,
+    <Youtube fontSize="small" className="youtube" />,
+    <Reddit fontSize="small" className="reddit" />,
+    <Twitter fontSize="small" className="twitter" />,
+  ];
   return (
-    <Paper square className={classes.paper}>
-      <div>
-        <Typography variant="caption" style={{ display: "block" }}>
-          &#9400;{new Date().getFullYear()}
-        </Typography>
-        <Typography variant="caption" style={{ display: "block" }}>
-          Designed by Jun
-        </Typography>
-        <Typography variant="caption">Developed by Jun</Typography>
+    <div className={classes.root}>
+      <div className={classes.nav}>
+        <Navigation socialList={socialIcons} />
       </div>
-      <div>
-        <Typography variant="caption" style={{ display: "block" }}>
-          Powered by Reactjs | Material-ui | Styled-components
-        </Typography>
-        <Typography variant="caption">
-          Sourced from{" "}
-          <a
-            className={classes.atag}
-            href="https://github.com/mathdroid/covid19"
-          >
-            Mathdroid
-          </a>{" "}
-          |{" "}
-          <a
-            className={classes.atag}
-            href="https://covid19-docs.chrismichael.now.sh/"
-          >
-            Swagger
-          </a>
-          |{" "}
-          <a className={classes.atag} href="https://disease.sh/">
-            Chrismichael
-          </a>
-        </Typography>
-      </div>
-    </Paper>
+      <Typography variant="caption" component="span" className={classes.rights}>
+        &#9400;{new Date().getFullYear()} All rights reserved. Develop by Jun.
+        Design inspired by{" "}
+        <a
+          rel="noopener noreferrer"
+          target="_blank"
+          href="https://www.uistore.design/items/covid-19-landing-page-for-figma/"
+        >
+          Shamima Nasrin
+        </a>
+      </Typography>
+    </div>
   );
 };
 

@@ -17,3 +17,4 @@ export { default as virusGnR } from "./virusGnR.svg";
 export { default as confirm } from "./confirm.svg";
 export { default as death } from "./death.svg";
 export { default as flag } from "./flag.svg";
+export { default as footerVirus } from "./footerVirus.svg";

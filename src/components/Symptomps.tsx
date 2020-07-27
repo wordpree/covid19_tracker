@@ -36,7 +36,7 @@ const Symptomps = () => {
   const sm = useMediaQuery("(min-width:450px)");
   const img = sm ? symptompsSvg : smSymptomps;
   return (
-    <div className={classes.entry}>
+    <div className={classes.entry} id="Symptoms">
       <div className={classes.contentWrapper}>
         <TextContent {...symptomps} />
       </div>

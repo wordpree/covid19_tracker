@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
 const Contagion = () => {
   const classes = useStyles();
   return (
-    <div className={classes.entry}>
+    <div className={classes.entry} id="Contagion">
       <div className={classes.textWrapper}>
         <TextContent {...contagion} />
       </div>

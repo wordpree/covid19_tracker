@@ -1,7 +1,7 @@
 import React from "react";
 import { protect, protectMeasure } from "../content";
 import TextContent from "./TextContent";
-import { Typography, makeStyles, useMediaQuery } from "@material-ui/core";
+import { Typography, makeStyles } from "@material-ui/core";
 import { virusGreen, virusGnR } from "../svg";
 
 const useStyles = makeStyles((theme) => ({
@@ -124,9 +124,8 @@ const useStyles = makeStyles((theme) => ({
 
 const Protect = () => {
   const classes = useStyles();
-  const lg = useMediaQuery("(min-width:1200px)");
   return (
-    <div className={classes.entry}>
+    <div className={classes.entry} id="Prevention">
       <div className={classes.textWrapper}>
         <TextContent {...protect} />
       </div>
@@ -140,7 +139,7 @@ const Protect = () => {
           >
             <div className={classes.content}>
               <Typography
-                variant={lg ? "h4" : "h5"}
+                variant="h5"
                 className={`header${i} ${classes.header}`}
               >
                 {p.title}
