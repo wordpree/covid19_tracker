@@ -36,13 +36,18 @@ const useStyles = makeStyles((theme) => ({
   country: {
     boxShadow: " 0 7px 95px rgba(0,0,0,0.07)",
     background: "linear-gradient(180deg,#FFFBFB 0%,#FDFDFD 100%)",
+    marginTop: "2rem",
     [theme.breakpoints.up("md")]: {
       borderTopRightRadius: 10,
       borderBottomRightRadius: 10,
+      marginTop: "inherit",
     },
     "&>div": {
       padding: 0,
-      [theme.breakpoints.up("md")]: {
+      [theme.breakpoints.up(450)]: {
+        padding: "1.25rem",
+      },
+      [theme.breakpoints.up("lg")]: {
         padding: "2rem",
       },
     },

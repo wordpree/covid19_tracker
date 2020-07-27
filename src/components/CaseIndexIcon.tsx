@@ -44,7 +44,7 @@ const CaseIndexIcon = ({ handleLeft, handleRight }: ICProps) => {
           color="secondary"
           aria-label="left"
           component="span"
-          size="small"
+          size="medium"
           onClick={handleLeft}
         >
           <ChevronLeft />
@@ -54,7 +54,7 @@ const CaseIndexIcon = ({ handleLeft, handleRight }: ICProps) => {
           color="primary"
           aria-label="right"
           component="span"
-          size="small"
+          size="medium"
           onClick={handleRight}
         >
           <ChevronRight />

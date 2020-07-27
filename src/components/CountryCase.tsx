@@ -1,23 +1,25 @@
 import React from "react";
 import { IGMapsCountry } from "../util/type";
-import {
-  List,
-  ListItem,
-  ListItemText,
-  ListItemAvatar,
-  Avatar,
-  makeStyles,
-} from "@material-ui/core";
+import { makeStyles, Typography } from "@material-ui/core";
 import { motion } from "framer-motion";
 
 interface ICProps {
   data: IGMapsCountry;
 }
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
+  list: {
+    display: "flex",
+    alignItems: "center",
+    padding: "1rem 2rem",
+  },
+  img: {
+    maxWidth: 45,
+    height: "auto",
+  },
   country: {
     color: "#035755",
-    maxWidth: 115,
+    paddingLeft: "10%",
     "&>span": {
       fontWeight: "bold",
       fontSize: "0.8rem",
@@ -25,12 +27,13 @@ const useStyles = makeStyles({
   },
   case: {
     color: "#035755",
+    marginLeft: "auto",
     "&>span": {
       fontWeight: "bold",
       fontSize: "0.8rem",
     },
   },
-});
+}));
 
 const CountryCase = ({ data }: ICProps) => {
   const classes = useStyles();
@@ -44,15 +47,25 @@ const CountryCase = ({ data }: ICProps) => {
         transition: { type: "spring", stiffness: 90, mass: 0.8 },
       }}
     >
-      <List>
-        <ListItem>
-          <ListItemAvatar>
-            <Avatar src={countryInfo.flag} alt="country flag"></Avatar>
-          </ListItemAvatar>
-          <ListItemText primary={country} className={classes.country} />
-          <ListItemText primary={cases} className={classes.case} />
-        </ListItem>
-      </List>
+      <div className={classes.list}>
+        <Typography component="span">
+          <img
+            src={countryInfo.flag}
+            alt="country flag"
+            className={classes.img}
+          />
+        </Typography>
+        <Typography
+          component="span"
+          className={classes.country}
+          variant="body2"
+        >
+          {country}
+        </Typography>
+        <Typography component="span" className={classes.case} variant="body2">
+          {cases}
+        </Typography>
+      </div>
     </motion.div>
   );
 };
