@@ -15,7 +15,10 @@ interface IIWProps {
 
 const useStyles = makeStyles((theme) => ({
   card: {
-    background: "rgba(250, 86, 82, 0.15)",
+    background: "#fff",
+    [theme.breakpoints.up("sm")]: {
+      background: "rgba(250, 86, 82, 0.15)",
+    },
     overflow: "auto",
   },
   typo: {

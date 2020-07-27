@@ -6,8 +6,9 @@ import Contagion from "./Contagion";
 import Symptomps from "./Symptomps";
 import Protect from "./Protect";
 import CaseMap from "./CaseMap";
-import Footer from "./Footer";
 import VirusInfo from "./VirusInfo";
+import Contact from "./Contact";
+import Footer from "./Footer";
 import { CasesWithMapsProvider } from "./context";
 
 const useStyles = makeStyles((theme) => ({
@@ -38,6 +39,7 @@ const Layout = () => {
         <CasesWithMapsProvider>
           <CaseMap />
         </CasesWithMapsProvider>
+        <Contact />
       </div>
       {/* <Footer /> */}
     </Container>

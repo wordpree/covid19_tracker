@@ -89,3 +89,10 @@ export const protectMeasure = [
     image: avoidContact,
   },
 ];
+
+export const attention = {
+  alert: "",
+  title: "How to seek medical attention",
+  content:
+    "If you are sick and think you have symptoms of COVID-19, seek medical advice and get tested. If you want to talk to someone about your symptoms, call the National Coronavirus Helpline for advice.",
+};
