@@ -30,7 +30,7 @@ const uesStyles = makeStyles((theme) => ({
     padding: "1rem",
     maxWidth: "none",
     marginLeft: "1rem",
-    borderLeft: "4px solid #7DCDCD",
+    borderLeft: "4px solid #035755",
     [theme.breakpoints.up("sm")]: {
       maxWidth: "80%",
       padding: "1rem 2rem",
@@ -100,7 +100,7 @@ const Contact = () => {
               href="https://www.health.gov.au/news/health-alerts/novel-coronavirus-2019-ncov-health-alert"
               className={classes.info}
             >
-              Australia health government webpage
+              Australian government health webpage
             </a>
           </span>
         </div>

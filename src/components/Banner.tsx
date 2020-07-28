@@ -52,6 +52,8 @@ const useStyles = makeStyles((theme) => ({
 
 const Banner = () => {
   const classes = useStyles();
+  const website =
+    "https://www.health.gov.au/news/health-alerts/novel-coronavirus-2019-ncov-health-alert/what-you-need-to-know-about-coronavirus-covid-19#how-it-spreads";
   const sm = useMediaQuery("(min-width:768px)");
   return (
     <div className={classes.entry} id="Overview">
@@ -59,14 +61,22 @@ const Banner = () => {
         <Grid item xs={12} sm={6}>
           <div className={classes.infoWrapper}>
             <TextContent {...banner} />
-            {sm && <CustomizedBtn color="primary">Learn More</CustomizedBtn>}
+            {sm && (
+              <CustomizedBtn color="primary" href={website}>
+                Learn More
+              </CustomizedBtn>
+            )}
           </div>
         </Grid>
         <Grid item xs={12} sm={6} className={classes.gridRight}>
           <div>
             <img src={bannerSvg} alt="stay-at-home" className={classes.img} />
           </div>
-          {!sm && <CustomizedBtn color="primary">Learn More</CustomizedBtn>}
+          {!sm && (
+            <CustomizedBtn href={website} color="primary">
+              Learn More
+            </CustomizedBtn>
+          )}
         </Grid>
       </Grid>
     </div>

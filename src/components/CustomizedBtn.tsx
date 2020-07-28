@@ -4,6 +4,7 @@ import { Button, makeStyles } from "@material-ui/core";
 interface ICProps {
   children: React.ReactNode;
   color: "primary" | "secondary";
+  href: string;
 }
 
 const useStyles = makeStyles({
@@ -16,10 +17,11 @@ const useStyles = makeStyles({
   },
 });
 
-const CustomizedBtn = ({ children, color }: ICProps) => {
+const CustomizedBtn = ({ children, color, href }: ICProps) => {
   const classes = useStyles();
   return (
     <Button
+      href={href}
       variant="contained"
       color={color}
       className={classes.btn}

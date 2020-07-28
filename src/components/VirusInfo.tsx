@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "0.5rem 1.5rem",
     margin: "0 auto",
     maxWidth: 420,
-    "&>button": {
+    "&>a": {
       color: "#FB4C47",
     },
     [theme.breakpoints.up("sm")]: {
@@ -83,6 +83,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 const VirusInfo = () => {
   const classes = useStyles();
+  const infoLink =
+    "https://www.health.gov.au/news/health-alerts/novel-coronavirus-2019-ncov-health-alert/what-you-need-to-know-about-coronavirus-covid-19#what-is-covid19";
   const sm = useMediaQuery("(min-width:768px)");
   return (
     <div className={classes.entry}>
@@ -96,12 +98,18 @@ const VirusInfo = () => {
           <div className={classes.contentWrapper}>
             <TextContent {...virusInfo} />
             {sm && (
-              <CustomizedBtn color="secondary">Let Us Start</CustomizedBtn>
+              <CustomizedBtn href={infoLink} color="secondary">
+                Let Us Start
+              </CustomizedBtn>
             )}
           </div>
         </div>
       </div>
-      {!sm && <CustomizedBtn color="secondary">Let Us Start</CustomizedBtn>}
+      {!sm && (
+        <CustomizedBtn href={infoLink} color="secondary">
+          Let Us Start
+        </CustomizedBtn>
+      )}
       <div className={classes.virusLight}>
         <img src={virusLight} alt="virus" />
       </div>
