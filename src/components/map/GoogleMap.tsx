@@ -6,12 +6,10 @@ import { renderToString } from "react-dom/server";
 import InfoWindowContent from "./infoWindow";
 
 class GoogleMap extends Component<{ data: IGMaps }, {}> {
-  private googleMapRef: React.RefObject<
-    HTMLDivElement
-  > | null = React.createRef();
+  private googleMapRef: React.RefObject<HTMLDivElement> | null = React.createRef();
   private map: any;
   private marker: any;
-  private api = "AIzaSyCJvV_z3MsVGB0ksNzK5EiNLcMB61v4uIw";
+  private api = "AIzaSyDeB-6D8TTQI8LVnoWBtIZHHEgjG7f_LnE";
 
   componentDidMount() {
     const url = `https://maps.googleapis.com/maps/api/js?key=${this.api}`;
